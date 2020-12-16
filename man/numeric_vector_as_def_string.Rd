@@ -17,12 +17,10 @@ Given a numeric vector, we want to return  the string
 that defines the same vector using 'c()'
 }
 \details{
----
-title: Helper Functions For Exam Generation
-date:  2020-12-15
----
-
+\subsection{title: Helper Functions For Exam Generation
+date:  2020-12-15}{
 
 This is needed when producing R-statments for
 exercises and exams
+}
 }

@@ -11,7 +11,7 @@ exam2rmd(
   ps_rmd_dir = "rmd",
   ps_rsrc_dir = "R",
   ps_tex_dir = "tex",
-  ps_outdir = "out",
+  ps_out_dir = "out",
   pb_force = FALSE
 )
 }
@@ -28,7 +28,7 @@ exam2rmd(
 
 \item{ps_tex_dir}{directory containing additional tex files}
 
-\item{ps_outdir}{directory where output should be stored}
+\item{ps_out_dir}{directory where output should be stored}
 
 \item{pb_force}{flag to first delete old output directories}
 }
@@ -42,13 +42,11 @@ be stored in a file called 'nrm.Rmd'. Any problem setup should be included in
 an R-script called 'nrm.R' which contains a single function 'generate_problem_setup()'
 }
 \details{
----
-title: Create Rmarkdown Exam
-date:  2020-12-15
----
-
+\subsection{title: Create Rmarkdown Exam
+date:  2020-12-15}{
 
 Solutions to questions must be tagged with the begin-tag '\solstart' and the
 end-tag '\solend'. These tags have to be defined in the yaml header or in a
 preamble.tex file
+}
 }

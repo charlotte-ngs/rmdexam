@@ -15,7 +15,8 @@
 #'
 #' @param pvec vector to be converted to definition string
 #' @return s_result defining string for pvec
-#+
+#'
+#' @export numeric_vector_as_def_string
 numeric_vector_as_def_string <- function(pvec){
   return(paste0('c(', paste0(pvec, collapse = ','), ')', collapse = ''))
 }
@@ -33,7 +34,7 @@ numeric_vector_as_def_string <- function(pvec){
 #'
 #' @param pvec vector to be converted to definition string
 #' @return s_result defining string for pvec
-#+
+#' @export character_vector_as_def_string
 character_vector_as_def_string <- function(pvec){
   return(paste0("c('", paste0(pvec, collapse = "','"), "')", collapse = ''))
 }
