@@ -32,7 +32,7 @@ create_pedigree <- function(pn_nr_founder,
                             ps_set_sex = 'yes_sys'){
 
     # Founder Population Haplotypes
-  founderPop  <-  AlphaSimR::quickHaplo(nInd=n_nr_founder, nChr=1, segSites=10)
+  founderPop  <-  AlphaSimR::quickHaplo(nInd=pn_nr_founder, nChr=1, segSites=10)
 
   # Set simulation parameters
   SP  <-  AlphaSimR::SimParam$new(founderPop)
@@ -42,11 +42,11 @@ create_pedigree <- function(pn_nr_founder,
   pop  <-  AlphaSimR::newPop(founderPop, simParam=SP)
 
   # F1 population with founder parents
-  pop2 <- AlphaSimR::randCross(pop, n_nr_cross_f1, simParam=SP)
+  pop2 <- AlphaSimR::randCross(pop, pn_nr_cross_f1, simParam=SP)
 
   # loop over a number of subsequenct generations
-  for (idx in 1:n_nr_gen){
-    pop2 <- c(pop2, AlphaSimR::randCross(pop2, vec_nr_cross[idx], simParam=SP))
+  for (idx in 1:pn_nr_gen){
+    pop2 <- c(pop2, AlphaSimR::randCross(pop2, pvec_nr_cross[idx], simParam=SP))
   }
 
   # put pedigree information into a tibble
