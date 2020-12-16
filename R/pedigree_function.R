@@ -9,11 +9,11 @@
 #' @description
 #' Pedigree creation with AlphaSimR is wrapped into this function
 #'
-#' @param pn_nr_founder
-#' @param pn_nr_cross_f1
-#' @param pn_nr_gen
-#' @param pvec_nr_cross
-#' @param ps_set_sex
+#' @param pn_nr_founder number of founder animals (animals without parents)
+#' @param pn_nr_cross_f1 nuber of animals in f1 (offspring of founders)
+#' @param pn_nr_gen number of generation to simulate
+#' @param pvec_nr_cross the number of crosses in each generation
+#' @param ps_set_sex how sex should be set in AlphaSimR
 #' @return pedigree as tibble
 #'
 #' @example
@@ -36,7 +36,7 @@ create_pedigree <- function(pn_nr_founder,
 
   # Set simulation parameters
   SP  <-  AlphaSimR::SimParam$new(founderPop)
-  SP$setSexes("yes_sys")
+  SP$setSexes(ps_set_sex)
 
   # Create founder population
   pop  <-  AlphaSimR::newPop(founderPop, simParam=SP)
