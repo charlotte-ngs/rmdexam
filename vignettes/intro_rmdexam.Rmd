@@ -1,0 +1,31 @@
+---
+title: "Introduction To rmdexam"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction To rmdexam}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(rmdexam)
+```
+
+# Disclaimer
+This package follows the example of the `exams` package. The goal is to provide an easy and seamless way to generate individualised exams for students that can either be solved on paper or online.
+
+
+# Why a new package
+The `exams` package is well established and there are a number of good references including a talk at https://www.youtube.com/watch?v=PnyCR7q4P4Q. To the best of my very limited knowledge, the `exams` package does not provide to generate exams in the Rmd format, such that they can be handed out to students.
+
+
+
+
+
