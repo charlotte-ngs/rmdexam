@@ -25,7 +25,7 @@
 #' @param ps_rmd_dir directory where rmd-sources for the problems are stored
 #' @param ps_rsrc_dir directory where R-scripts for problem-setup are stored
 #' @param ps_tex_dir directory containing additional tex files
-#' @param ps_outdir directory where output should be stored
+#' @param ps_out_dir directory where output should be stored
 #' @param pb_force flag to first delete old output directories
 #'
 #' @example
@@ -40,17 +40,17 @@ exam2rmd <- function(pvec_problem,
                      ps_rmd_dir  = 'rmd',
                      ps_rsrc_dir = 'R',
                      ps_tex_dir  = 'tex',
-                     ps_outdir   = 'out',
+                     ps_out_dir   = 'out',
                      pb_force    = FALSE){
   # with pb_force, existing output is deleted
-  if (pb_force && dir.exists(ps_outdir)){
-    cat(" * Removing existing output directory: ", ps_outdir, "\n")
-    unlink(ps_outdir)
+  if (pb_force && dir.exists(ps_out_dir)){
+    cat(" * Removing existing output directory: ", ps_out_dir, "\n")
+    unlink(ps_out_dir)
   }
-  # check whether ps_outdir exists
-  if (!dir.exists(ps_outdir)) {
-    cat(" * Create directory: ", ps_outdir, "\n")
-    dir.create(path = ps_outdir)
+  # check whether ps_out_dir exists
+  if (!dir.exists(ps_out_dir)) {
+    cat(" * Create directory: ", ps_out_dir, "\n")
+    dir.create(path = ps_out_dir)
   }
   # get a time-stamp
   s_cur_ts <- format(Sys.time(), '%Y%m%d%H%M%S')
@@ -58,11 +58,11 @@ exam2rmd <- function(pvec_problem,
   for (eidx in 1:pn_nr_exam){
     # create output directory for current exam
     if (!is.null(pvec_names) && eidx <= length(pvec_names)) {
-      cur_outdir <- file.path(ps_outdir, paste0('exam_', pvec_names[eidx]))
+      cur_outdir <- file.path(ps_out_dir, paste0('exam_', pvec_names[eidx]))
       cur_exam_rmd_file <- paste0(s_cur_ts, '_exam_', pvec_names[eidx], '.Rmd', collapse = '')
       cur_sol_rmd_file <- paste0(s_cur_ts, '_sol_', pvec_names[eidx], '.Rmd', collapse = '')
     } else {
-      cur_outdir <- file.path(ps_outdir, paste0('exam_', eidx))
+      cur_outdir <- file.path(ps_out_dir, paste0('exam_', eidx))
       cur_exam_rmd_file <- paste0(s_cur_ts, '_exam_', eidx, '.Rmd', collapse = '')
       cur_sol_rmd_file <- paste0(s_cur_ts, '_sol_', eidx, '.Rmd', collapse = '')
     }
