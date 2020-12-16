@@ -12,6 +12,17 @@ create_pedigree(
   ps_set_sex = "yes_sys"
 )
 }
+\arguments{
+\item{pn_nr_founder}{number of founder animals (animals without parents)}
+
+\item{pn_nr_cross_f1}{nuber of animals in f1 (offspring of founders)}
+
+\item{pn_nr_gen}{number of generation to simulate}
+
+\item{pvec_nr_cross}{the number of crosses in each generation}
+
+\item{ps_set_sex}{how sex should be set in AlphaSimR}
+}
 \value{
 pedigree as tibble
 }
