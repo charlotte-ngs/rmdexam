@@ -53,3 +53,52 @@ create_pedigree <- function(pn_nr_founder,
   return(tibble::tibble(ID = pop2@id, Sex = pop2@sex, Sire = pop2@father, Dam = pop2@mother))
 
 }
+
+## -------------------------------------------------------------------------- ##
+
+#'
+#' @title Extend Pedigree
+#'
+#' @description
+#' A given pedigree is extended with its founder animals.
+#'
+#' @details
+#' The founder animals are determined by taking the set-difference between
+#' the vector of parents and the vector of animal IDs
+#'
+#' @param ptbl_ped input pedigree to be extended by founders
+#' @return pedigree extended by founder animals
+#'
+#' @export extend_pedigree
+extend_pedigree <- function(ptbl_ped){
+  vec_founder_sire <- setdiff(ptbl_ped$Sire, ptbl_ped$ID)
+  n_nr_founder_sire <- length(vec_founder_sire)
+  vec_founder_dam <- setdiff(ptbl_ped$Dam, ptbl_ped$ID)
+  n_nr_founder_dam <- length(vec_founder_dam)
+
+  # check that founder_sire and founder_dam are not the same
+  if (length(intersect(vec_founder_sire, vec_founder_dam)) != 0)
+    stop(" * ERROR: Founder sires and founder dams are not exclusive")
+
+  tbl_ped_ext <- ptbl_ped
+  # extending pedigree with founder sires, if there are any
+  if (n_nr_founder_sire > 0){
+    tbl_ped_ext <- dplyr::bind_rows(
+      tibble::tibble(ID = vec_founder_sire[order(vec_founder_sire)],
+                     Sex = rep('M', n_nr_founder_sire),
+                     Sire = rep(NA, n_nr_founder_sire),
+                     Dam  = rep(NA, n_nr_founder_sire)),
+      tbl_ped_ext)
+  }
+  if (n_nr_founder_dam > 0){
+    tbl_ped_ext <- dplyr::bind_rows(
+      tibble::tibble(ID = vec_founder_dam[order(vec_founder_dam)],
+                     Sex = rep('F', n_nr_founder_dam),
+                     Sire = rep(NA, n_nr_founder_dam),
+                     Dam  = rep(NA, n_nr_founder_dam)),
+      tbl_ped_ext)
+
+  }
+  # return result
+  return(tbl_ped_ext)
+}
