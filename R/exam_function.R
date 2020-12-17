@@ -110,11 +110,13 @@ exam2rmd <- function(pvec_problem,
         l_problem_setup <- generate_problem_setup()
         # write problem setup statement
         cat(" *** Writing problem setup to: ", cur_sol_rmd_path, "\n")
-        cat("```{r problem setup, echo=FALSE, results='hide'}\n", file = cur_sol_rmd_path, append = TRUE)
+        cat(paste0("```{r ", cur_problem, "-problem-setup, echo=FALSE, results='hide'}\n", collapse = ''),
+            file = cur_sol_rmd_path, append = TRUE)
         cat(l_problem_setup$rstmt, "\n", file = cur_sol_rmd_path, append = TRUE)
         cat("```\n\n", file = cur_sol_rmd_path, append = TRUE)
         cat(" *** Writing problem setup to: ", cur_exam_rmd_path, "\n")
-        cat("```{r problem setup, echo=FALSE, results='hide'}\n", file = cur_exam_rmd_path, append = TRUE)
+        cat(paste0("```{r ", cur_problem, "-problem-setup, echo=FALSE, results='hide'}\n", collapse = ''),
+            file = cur_exam_rmd_path, append = TRUE)
         cat(l_problem_setup$rstmt, "\n", file = cur_exam_rmd_path, append = TRUE)
         cat("```\n\n", file = cur_exam_rmd_path, append = TRUE)
       }
