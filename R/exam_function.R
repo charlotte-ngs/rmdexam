@@ -15,8 +15,8 @@
 #' an R-script called 'nrm.R' which contains a single function 'generate_problem_setup()'
 #'
 #' @details
-#' Solutions to questions must be tagged with the begin-tag '\solstart' and the
-#' end-tag '\solend'. These tags have to be defined in the yaml header or in a
+#' Solutions to questions must be tagged with the begin-tag 'solstart' and the
+#' end-tag 'solend'. These tags have to be defined in the yaml header or in a
 #' preamble.tex file
 #'
 #' @param pvec_problem vector of problem names

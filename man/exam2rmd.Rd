@@ -45,8 +45,8 @@ an R-script called 'nrm.R' which contains a single function 'generate_problem_se
 \subsection{title: Create Rmarkdown Exam
 date:  2020-12-15}{
 
-Solutions to questions must be tagged with the begin-tag '\solstart' and the
-end-tag '\solend'. These tags have to be defined in the yaml header or in a
+Solutions to questions must be tagged with the begin-tag 'solstart' and the
+end-tag 'solend'. These tags have to be defined in the yaml header or in a
 preamble.tex file
 }
 }
