@@ -133,11 +133,13 @@ exam2rmd <- function(pvec_problem,
           stop(" * ERROR: not the same number of solution start positions and end positions")
         n_nr_section <- length(l_sol_pos$start)
         vec_exam <- vec_problem[1:l_sol_pos$start[1]]
-        for (idx in 2:n_nr_section){
-          vec_exam <- c(vec_exam, vec_problem[(l_sol_pos$end[idx-1]+1):l_sol_pos$start[idx]])
+        if (n_nr_section > 1){
+          for (idx in 2:n_nr_section){
+            vec_exam <- c(vec_exam, vec_problem[(l_sol_pos$end[idx-1]+1):l_sol_pos$start[idx]])
+          }
         }
         # remaining
-        if ((l_sol_pos$start[n_nr_section]+1) < length(vec_problem)){
+        if ((l_sol_pos$end[n_nr_section]+1) < length(vec_problem)){
           vec_exam <- c(vec_exam, vec_problem[(l_sol_pos$end[n_nr_section]+1):length(vec_problem)])
         }
         cat(" *** Writing problem rmd: ", cur_problem_rmd_path, " to exam: ", cur_exam_rmd_path, "\n")
